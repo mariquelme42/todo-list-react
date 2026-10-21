@@ -9,6 +9,11 @@ export const createTodo = (text, id) => ({
 
 export const addTodo = (todos, newTodo) => [...todos, newTodo];
 
+export const toggleTodo = (todos, id) =>
+  todos.map((todo) =>
+    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  );
+
 // Genera un id único. No es una función pura (depende del azar),
 // por eso queda separada de las demás y se usa sólo al crear tareas.
 export const generateId = () =>

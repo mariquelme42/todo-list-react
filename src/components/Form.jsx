@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FaChevronDown, FaFilter, FaPlus } from "react-icons/fa";
+import { FILTERS, FILTER_LABELS } from "../utils/todos";
 import styles from "./Form.module.css";
 
-function Form({ onAddTodo }) {
+function Form({ onAddTodo, filter, onFilterChange }) {
   // El texto del input sólo lo necesita Form, por eso el estado vive acá
   const [inputText, setInputText] = useState("");
 
@@ -31,10 +32,17 @@ function Form({ onAddTodo }) {
 
       <div className={styles.selectGroup}>
         <FaFilter className={styles.selectIcon} aria-hidden="true" />
-        <select className={styles.select} aria-label="Filtrar tareas">
-          <option value="todas">Todas</option>
-          <option value="completadas">Completadas</option>
-          <option value="incompletas">Incompletas</option>
+        <select
+          className={styles.select}
+          value={filter}
+          onChange={(event) => onFilterChange(event.target.value)}
+          aria-label="Filtrar tareas"
+        >
+          {Object.values(FILTERS).map((value) => (
+            <option key={value} value={value}>
+              {FILTER_LABELS[value]}
+            </option>
+          ))}
         </select>
         <FaChevronDown className={styles.chevron} aria-hidden="true" />
       </div>

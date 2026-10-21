@@ -6,11 +6,21 @@ import styles from "./Form.module.css";
 function Form({ onAddTodo, filter, onFilterChange }) {
   // El texto del input sólo lo necesita Form, por eso el estado vive acá
   const [inputText, setInputText] = useState("");
+  const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (inputText.trim() === "") {
+      setError(true);
+      return;
+    }
     onAddTodo(inputText);
     setInputText("");
+  };
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+    if (error) setError(false);
   };
 
   return (
@@ -20,9 +30,10 @@ function Form({ onAddTodo, filter, onFilterChange }) {
           className={styles.input}
           type="text"
           value={inputText}
-          onChange={(event) => setInputText(event.target.value)}
+          onChange={handleInputChange}
           placeholder="Ingresá una tarea"
           aria-label="Nueva tarea"
+          aria-invalid={error}
           maxLength={120}
         />
         <button type="submit" className={styles.addButton} aria-label="Agregar tarea">
@@ -46,6 +57,12 @@ function Form({ onAddTodo, filter, onFilterChange }) {
         </select>
         <FaChevronDown className={styles.chevron} aria-hidden="true" />
       </div>
+
+      {error && (
+        <p className={styles.error} role="alert">
+          Escribí una tarea antes de agregarla.
+        </p>
+      )}
     </form>
   );
 }

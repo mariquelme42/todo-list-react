@@ -4,7 +4,7 @@ Trabajo Práctico Final: aplicación de lista de tareas hecha con **React + Vite
 Permite agregar tareas, marcarlas como completadas, eliminarlas y filtrarlas.
 Las tareas se guardan en **localStorage**, así que siguen ahí al recargar la página.
 
-🔗 **Demo:** https://USUARIO.github.io/todo-list-react/
+🔗 **Demo:** https://mariquelme42.github.io/todo-list-react/
 
 ## Funcionalidades
 

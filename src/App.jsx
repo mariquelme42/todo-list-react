@@ -1,22 +1,24 @@
+import { useState } from "react";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
+import { addTodo, createTodo, generateId } from "./utils/todos";
 import styles from "./App.module.css";
 
-// Datos de ejemplo para maquetar (se reemplazan por estado en la próxima funcionalidad)
-const TAREAS_EJEMPLO = [
-  { id: 1, text: "Repasar useState", completed: false },
-  { id: 2, text: "Hacer la maqueta del TPF", completed: true },
-];
-
 function App() {
+  // Estado elevado: App es la única fuente de verdad de las tareas
+  const [todos, setTodos] = useState([]);
+
+  const handleAdd = (text) =>
+    setTodos((prev) => addTodo(prev, createTodo(text, generateId())));
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
         <h1 className={styles.title}>Lista de tareas</h1>
       </header>
       <main className={styles.main}>
-        <Form />
-        <TodoList todos={TAREAS_EJEMPLO} />
+        <Form onAddTodo={handleAdd} />
+        <TodoList todos={todos} />
       </main>
     </div>
   );

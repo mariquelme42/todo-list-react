@@ -1,4 +1,5 @@
 import { FaCheck, FaTrash } from "react-icons/fa";
+import IconButton from "./IconButton";
 import styles from "./Todo.module.css";
 
 function Todo({ todo, onToggle, onDelete }) {
@@ -9,23 +10,17 @@ function Todo({ todo, onToggle, onDelete }) {
       <span className={`${styles.text} ${completed ? styles.completed : ""}`}>
         {text}
       </span>
-      <button
-        type="button"
-        className={styles.completeBtn}
+      <IconButton
+        variant={completed ? "neutral" : "success"}
+        label={completed ? "Marcar como pendiente" : "Marcar como completada"}
+        pressed={completed}
         onClick={() => onToggle(id)}
-        aria-label={completed ? "Marcar como pendiente" : "Marcar como completada"}
-        aria-pressed={completed}
       >
         <FaCheck />
-      </button>
-      <button
-        type="button"
-        className={styles.trashBtn}
-        onClick={() => onDelete(id)}
-        aria-label="Eliminar tarea"
-      >
+      </IconButton>
+      <IconButton variant="danger" label="Eliminar tarea" onClick={() => onDelete(id)}>
         <FaTrash />
-      </button>
+      </IconButton>
     </li>
   );
 }

@@ -86,16 +86,3 @@
     flex-basis: 100%;
   }
 }
-
-.addButton {
-  border: none;
-  min-width: 48px;
-  padding: 0 1.1rem;
-  background: var(--primary);
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.addButton:hover {
-  filter: brightness(1.15);
-}

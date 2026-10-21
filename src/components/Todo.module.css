@@ -1,0 +1,52 @@
+.todo {
+  display: flex;
+  align-items: stretch;
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: aparecer 0.25s ease-out;
+}
+
+.text {
+  flex: 1;
+  align-self: center;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+  transition: opacity 0.2s;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .todo {
+    animation: none;
+  }
+}
+
+.completeBtn,
+.trashBtn {
+  border: none;
+  min-width: 48px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.completeBtn {
+  background: var(--success);
+}
+
+.trashBtn {
+  background: var(--danger);
+}

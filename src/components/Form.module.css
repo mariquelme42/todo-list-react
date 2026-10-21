@@ -1,0 +1,101 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.inputGroup {
+  flex: 1 1 320px;
+  display: flex;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.inputGroup:focus-within {
+  box-shadow: 0 0 0 3px rgba(11, 212, 162, 0.6);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.selectGroup {
+  position: relative;
+  flex: 0 1 210px;
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
+.selectGroup:focus-within {
+  box-shadow: 0 0 0 3px rgba(11, 212, 162, 0.6);
+}
+
+.selectIcon,
+.chevron {
+  position: absolute;
+  color: var(--primary);
+  pointer-events: none;
+}
+
+.selectIcon {
+  left: 0.9rem;
+}
+
+.chevron {
+  right: 0.9rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.75rem 2.4rem 0.75rem 2.6rem;
+  font-size: 1rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.error {
+  flex-basis: 100%;
+  text-align: center;
+  color: #ff9b9b;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 560px) {
+  .selectGroup {
+    flex-basis: 100%;
+  }
+}
+
+.addButton {
+  border: none;
+  min-width: 48px;
+  padding: 0 1.1rem;
+  background: var(--primary);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  filter: brightness(1.15);
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import {
   EMPTY_MESSAGES,
   FILTERS,
@@ -16,7 +17,8 @@ import styles from "./App.module.css";
 
 function App() {
   // Estado elevado: App es la única fuente de verdad de las tareas y del filtro
-  const [todos, setTodos] = useState([]);
+  // Las tareas se guardan en localStorage (ver hooks/useLocalStorage.js)
+  const [todos, setTodos] = useLocalStorage("todos", []);
   const [filter, setFilter] = useState(FILTERS.ALL);
 
   const handleAdd = (text) =>

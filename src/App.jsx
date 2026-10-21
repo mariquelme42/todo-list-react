@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
-import { addTodo, createTodo, generateId, toggleTodo } from "./utils/todos";
+import { addTodo, createTodo, generateId, removeTodo, toggleTodo } from "./utils/todos";
 import styles from "./App.module.css";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
     setTodos((prev) => addTodo(prev, createTodo(text, generateId())));
 
   const handleToggle = (id) => setTodos((prev) => toggleTodo(prev, id));
+  const handleDelete = (id) => setTodos((prev) => removeTodo(prev, id));
 
   return (
     <div className={styles.app}>
@@ -20,7 +21,7 @@ function App() {
       </header>
       <main className={styles.main}>
         <Form onAddTodo={handleAdd} />
-        <TodoList todos={todos} onToggle={handleToggle} />
+        <TodoList todos={todos} onToggle={handleToggle} onDelete={handleDelete} />
       </main>
     </div>
   );

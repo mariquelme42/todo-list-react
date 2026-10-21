@@ -1,7 +1,7 @@
 import { FaCheck, FaTrash } from "react-icons/fa";
 import styles from "./Todo.module.css";
 
-function Todo({ todo, onToggle }) {
+function Todo({ todo, onToggle, onDelete }) {
   const { id, text, completed } = todo;
 
   return (
@@ -18,7 +18,12 @@ function Todo({ todo, onToggle }) {
       >
         <FaCheck />
       </button>
-      <button type="button" className={styles.trashBtn} aria-label="Eliminar tarea">
+      <button
+        type="button"
+        className={styles.trashBtn}
+        onClick={() => onDelete(id)}
+        aria-label="Eliminar tarea"
+      >
         <FaTrash />
       </button>
     </li>

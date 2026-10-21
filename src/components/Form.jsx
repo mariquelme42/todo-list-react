@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaChevronDown, FaFilter, FaPlus } from "react-icons/fa";
+import IconButton from "./IconButton";
 import { FILTERS, FILTER_LABELS } from "../utils/todos";
 import styles from "./Form.module.css";
 
@@ -36,9 +37,9 @@ function Form({ onAddTodo, filter, onFilterChange }) {
           aria-invalid={error}
           maxLength={120}
         />
-        <button type="submit" className={styles.addButton} aria-label="Agregar tarea">
+        <IconButton type="submit" variant="primary" label="Agregar tarea">
           <FaPlus />
-        </button>
+        </IconButton>
       </div>
 
       <div className={styles.selectGroup}>

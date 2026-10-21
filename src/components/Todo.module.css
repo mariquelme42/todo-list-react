@@ -34,19 +34,3 @@
     animation: none;
   }
 }
-
-.completeBtn,
-.trashBtn {
-  border: none;
-  min-width: 48px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.completeBtn {
-  background: var(--success);
-}
-
-.trashBtn {
-  background: var(--danger);
-}
